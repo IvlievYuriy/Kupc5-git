@@ -8,7 +8,7 @@ namespace Yrok2
         private readonly float _acceleration;   //ускорение
 
         #region Конструктор
-        public AccelerationMove(Transform transform, Rigidbody player, float speed, float acceleration) : base(transform, player, speed)
+        public AccelerationMove(Transform transform, Rigidbody2D player, float speed, float acceleration) : base(transform, player, speed)
         {
             _acceleration = acceleration;
         }

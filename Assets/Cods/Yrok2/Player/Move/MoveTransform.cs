@@ -7,12 +7,12 @@ namespace Yrok2
     {
         private readonly Transform _transform;  //местораспоположение персонажа        
         private Vector3 _move;                  //вектор перемещения
-        private Rigidbody _player;            //Жёсткое Тело Персонажа
+        private Rigidbody2D _player;            //Жёсткое Тело Персонажа
 
         public float Speed { get; protected set; }  //скорость
 
         #region Конструктор
-        public MoveTransform(Transform transform, Rigidbody player, float speed)
+        public MoveTransform(Transform transform, Rigidbody2D player, float speed)
         {
             _transform = transform;
             _player = player;
@@ -26,7 +26,7 @@ namespace Yrok2
         {            
             _move.Set(horizontal, vertical, 0.0f);
 
-            _player.AddForce(_move * Speed, ForceMode.Impulse);
+            _player.AddForce(_move * Speed, ForceMode2D.Impulse);            
         }
         #endregion
     }

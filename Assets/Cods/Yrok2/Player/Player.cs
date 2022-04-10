@@ -6,8 +6,8 @@ namespace Yrok2
     /// Персонаж
     /// Вешаем на ИО - Player
     /// </summary>
-    [RequireComponent(typeof(Rigidbody))]   //добавляем на объект Жёсткое Тело
-    [RequireComponent(typeof(BoxCollider))]    //добавляем на объект Коллайдер
+    [RequireComponent(typeof(Rigidbody2D))]   //добавляем на объект Жёсткое Тело
+    [RequireComponent(typeof(CapsuleCollider2D))]    //добавляем на объект Коллайдер
     internal sealed class Player : MonoBehaviour
     {
         #region Поля
@@ -19,8 +19,8 @@ namespace Yrok2
         #endregion
 
         #region Компоненты персонажа
-        private BoxCollider _collider;
-        private Rigidbody _rb;
+        private CapsuleCollider2D _collider;
+        private Rigidbody2D _rb;
         #endregion
 
         #region Стрельба
@@ -38,8 +38,10 @@ namespace Yrok2
         {
             _camera = Camera.main;
 
-            _rb = GetComponent<Rigidbody>();
-            _collider = GetComponent<BoxCollider>();
+            _rb = GetComponent<Rigidbody2D>();
+            _collider = GetComponent<CapsuleCollider2D>();
+
+            _rb.gravityScale = 0;   //убираем гравитацию
 
             #region Присвоение Персонажу текущих характеристик
             IDataShip _dataShip = new DataShip();
