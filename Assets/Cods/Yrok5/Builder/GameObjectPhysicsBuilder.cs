@@ -2,30 +2,31 @@
 
 namespace Asteroids.Builder
 {
+    #region
+    #endregion
+
     /// <summary>
     /// Конкретный строитель для визуала
     /// </summary>
-    internal sealed class GameObjectVisualBuilder : GameObjectBuilder
+    internal sealed class GameObjectPhysicsBuilder : GameObjectBuilder
     {
-        #region Конструктор
-        public GameObjectVisualBuilder(GameObject gameObject) : base(gameObject)
+        public GameObjectPhysicsBuilder(GameObject gameObject) : base(gameObject)
         { 
         }
-        #endregion
 
         #region Методы
-        /// <summary>Присваиваем объекту Имя </summary>
-        public GameObjectVisualBuilder Name(string name)
+        /// <summary>Вешаем на ИО БоксКоллайдер2D </summary>
+        public GameObjectPhysicsBuilder BoxCollider2D()
         {
-            _gameObject.name = name;
+            GetOrAddComponent<BoxCollider2D>();
             return this;
         }
 
-        /// <summary>Присваиваем объекту Картинку для отображения на дисплее </summary>
-        public GameObjectVisualBuilder Sprite(Sprite sprite)
+        /// <summary>Вешаем на ИО ЖёсткоеТело2D определённой массы</summary>
+        public GameObjectPhysicsBuilder Rigidbody2D(float mass)
         {
-            var component = GetOrAddComponent<SpriteRenderer>();
-            component.sprite = sprite;
+            var component = GetOrAddComponent<Rigidbody2D>();
+            component.mass = mass;
             return this;
         }
 
